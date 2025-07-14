@@ -10,14 +10,14 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, compact = false }: ProjectCardProps) {
     if (compact) {
         return (
-            <div className="border rounded-lg bg-background/70 p-4 hover:bg-background/90 transition-colors">
+            <div className="border rounded-lg bg-background/70 p-4 sm:p-4 p-3 hover:bg-background/90 transition-colors">
                 {/* Compact Header */}
-                <div className="flex items-start justify-between mb-3">
+                <div className="flex items-start justify-between mb-3 flex-col sm:flex-row gap-2 sm:gap-0">
                     <div className="flex-1">
-                        <h3 className="text-lg font-bold mb-1">{project.title}</h3>
+                        <h3 className="text-lg sm:text-lg text-base font-bold mb-1">{project.title}</h3>
                         <p className="text-muted-foreground text-sm mb-2">{project.description}</p>
                     </div>
-                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-1 text-xs text-muted-foreground mt-2 sm:mt-0">
                         <Calendar size={12} />
                         {formatDate(project.date)}
                     </div>
@@ -106,21 +106,21 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
 
     // Full card layout
     return (
-        <div className="border rounded-lg bg-background/70 p-6 hover:bg-background/90 transition-colors">
+        <div className="border rounded-lg bg-background/70 p-6 sm:p-6 p-3 hover:bg-background/90 transition-colors">
             {/* Header */}
-            <div className="flex items-start justify-between mb-4">
+            <div className="flex items-start justify-between mb-4 flex-col sm:flex-row gap-2 sm:gap-0">
                 <div className="flex-1">
-                    <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
-                    <p className="text-muted-foreground mb-3">{project.description}</p>
+                    <h2 className="text-2xl sm:text-2xl text-lg font-bold mb-2">{project.title}</h2>
+                    <p className="text-muted-foreground mb-3 text-base sm:text-base text-sm">{project.description}</p>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mt-2 sm:mt-0">
                     <Calendar size={16} />
                     {formatDate(project.date)}
                 </div>
             </div>
 
             {/* Project Details */}
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-6 mb-6">
                 {/* Left Column */}
                 <div className="space-y-4">
                     {/* Status and Category */}
@@ -170,7 +170,7 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
                 </div>
 
                 {/* Right Column */}
-                <div className="space-y-4">
+                <div className="space-y-4 mt-4 md:mt-0">
                     {/* Learning */}
                     {project.learning && (
                         <div>
@@ -204,14 +204,14 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
 
             {/* Footer - Links */}
             {(project.github || project.demo) && (
-                <div className="flex gap-3 pt-4 border-t">
+                <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t">
                     {project.github && (
                         <a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="View on GitHub"
-                            className="flex items-center gap-2 px-4 py-2 border border-border rounded-md text-sm hover:bg-accent/40 transition-colors"
+                            className="flex items-center gap-2 px-4 py-2 border border-border rounded-md text-sm hover:bg-accent/40 transition-colors justify-center"
                         >
                             <Github size={16} />
                             View on GitHub
@@ -223,7 +223,7 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Live Demo"
-                            className="flex items-center gap-2 px-4 py-2 border border-border rounded-md text-sm hover:bg-accent/40 transition-colors"
+                            className="flex items-center gap-2 px-4 py-2 border border-border rounded-md text-sm hover:bg-accent/40 transition-colors justify-center"
                         >
                             <Globe size={16} />
                             Live Demo

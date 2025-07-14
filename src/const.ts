@@ -24,7 +24,7 @@ export const NAV_LINKS: Social_Links[] = [
 export const SOCIAL_LINKS: Social_Links[] = [
     {
         label: "Twitter",
-        href: "https://x.com/nturf"
+        href: "https://x.com/nturfff"
     },
     {
         label: "GitHub",
