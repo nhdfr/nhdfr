@@ -1,5 +1,4 @@
 import Link from "next/link"
-import React, { useState } from "react"
 import { SITE, NAV_LINKS } from "@/const"
 import { ModeToggle } from "./theme-toggle"
 import { Button } from "./ui/button"
