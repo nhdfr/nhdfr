@@ -1,7 +1,15 @@
 import Link from "next/link"
-import React from "react"
+import React, { useState } from "react"
 import { SITE, NAV_LINKS } from "@/const"
 import { ModeToggle } from "./theme-toggle"
+import { Button } from "./ui/button"
+import { Menu } from "lucide-react"
+import {
+    DropdownMenu,
+    DropdownMenuTrigger,
+    DropdownMenuContent,
+    DropdownMenuItem,
+} from "./ui/dropdown-menu"
 
 export default function Header() {
     return (
@@ -11,8 +19,9 @@ export default function Header() {
                     <img src="/favicon.svg" alt="Nturf" className="w-6 h-6" />
                     {SITE.title}
                 </Link>
-                <div className="flex items-center gap-2 md:gap-4">
-                    <nav className="hidden items-center gap-4 text-sm sm:gap-6 md:flex">
+                {/* Desktop nav */}
+                <div className="hidden md:flex items-center gap-2 md:gap-4">
+                    <nav className="flex items-center gap-4 text-sm sm:gap-6">
                         {NAV_LINKS.map((item) => (
                             <Link
                                 key={item.href}
@@ -24,6 +33,26 @@ export default function Header() {
                         ))}
                         <ModeToggle />
                     </nav>
+                </div>
+                {/* Mobile nav */}
+                <div className="flex md:hidden items-center gap-2">
+                    <ModeToggle />
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="outline" size="icon" aria-label="Open menu">
+                                <Menu className="w-5 h-5" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            {NAV_LINKS.map((item) => (
+                                <DropdownMenuItem asChild key={item.href}>
+                                    <Link href={item.href} className="capitalize w-full block">
+                                        {item.label}
+                                    </Link>
+                                </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
             </div>
         </header>
