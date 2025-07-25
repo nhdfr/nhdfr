@@ -1,6 +1,4 @@
-import Link from "next/link"
 import React from "react"
-import { Youtube } from "lucide-react"
 
 const InfoCard = () => {
     return (
@@ -12,7 +10,7 @@ const InfoCard = () => {
                 <div className="p-6 pt-0 space-y-4">
                     <p className="text-foreground text-sm">
                         Welcome to my playground for ideas that might someday catch fire (sometimes literally).
-                        <br/>
+                        <br />
                         Here are some of the things I do here:
                     </p>
                     <ul className="text-foreground text-sm list-disc list-inside space-y-1">
@@ -21,7 +19,7 @@ const InfoCard = () => {
                         <li>Showcases of my bigger projects</li>
                         <li>Honest write-ups about what works, what breaks, and what I learn along the way</li>
                     </ul>
-                   
+
                 </div>
             </div>
         </div>
