@@ -15,8 +15,8 @@ export default function Header() {
         <header className="bg-background/50 sticky top-0 z-10 backdrop-blur-md">
             <div className="container mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-4 p-4">
                 <Link href="/" className="font-bold flex shrink-0 items-center gap-2 text-xl">
-                    <img src="/favicon.svg" alt="Nturf" className="w-6 h-6" />
-                    {SITE.title}
+                    <img src="/header.png" alt="Dex logo" className="w-20 max-h-14 object-contain" />
+                    <span className="sr-only">{SITE.title}</span>
                 </Link>
                 {/* Desktop nav */}
                 <div className="hidden md:flex items-center gap-2 md:gap-4">

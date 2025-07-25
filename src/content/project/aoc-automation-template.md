@@ -9,7 +9,7 @@ technologies:
   - "CLI"
   - "Web scraping"
 category: "web and terminal automation"
-github: "https://github.com/nturf/AOC.git"
+github: "https://github.com/d3xfoo/AOC.git"
 featured: true
 features:
   - "Pulls Advent of Code challenges by year and day"

@@ -1,11 +1,10 @@
 import type { Site, Social_Links } from "./types";
 
 export const SITE: Site = {
-    title: "Nturf",
-    author: "Nahid",
-
-    description: "A digital playground for code, workflow hacks, and creative experiments. Sharing insights on VIM, Linux, Next.js, TypeScript, and the art of making things work (or break).",
-    href: "https://nturf.studio",
+    title: "D3xfoo",
+    author: "Dex",
+    description: "A personal playground for experiments, code, and creative projects by Dex. Explore tools, workflows, and honest write-ups about what works (and what breaks).",
+    href: "https://d3x.foo",
     locale: "en-US",
 }
 
@@ -24,14 +23,14 @@ export const NAV_LINKS: Social_Links[] = [
 export const SOCIAL_LINKS: Social_Links[] = [
     {
         label: "Twitter",
-        href: "https://x.com/nturfff"
+        href: "https://x.com/d3xfoo"
     },
     {
         label: "GitHub",
-        href: "https://github.com/nturf"
+        href: "https://github.com/d3xfoo"
     },
     {
         label: "Email",
-        href: "mailto:conversenahid@gmail.com" 
+        href: "mailto:hey@d3x.foo" 
     }
 ]

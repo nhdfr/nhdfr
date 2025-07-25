@@ -1,7 +1,7 @@
 {
-  "name": "NTurf Studio",
-  "short_name": "NTurf",
-  "description": "Creative Development & Design Studio",
+  "name": "Dex’s Playground",
+  "short_name": "Dex",
+  "description": "A personal playground for experiments, code, and creative projects by Dex. Explore tools, workflows, and honest write-ups about what works (and what breaks).",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
