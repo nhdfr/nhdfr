@@ -2,11 +2,6 @@ import { allBlogs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { formatDate } from '@/lib/time'
 
-interface BlogPostProps {
-    params: Promise<{
-        slug: string
-    }>
-}
 
 export async function generateStaticParams() {
     return allBlogs.map((post) => ({
@@ -14,7 +9,31 @@ export async function generateStaticParams() {
     }))
 }
 
-export default async function BlogPost({ params }: BlogPostProps) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params
+    const post = allBlogs.find((post) => post.slug === slug)
+    if (!post) return {}
+    return {
+        title: post.title,
+        description: post.description,
+        alternates: {
+            canonical: `/blog/${post.slug}`,
+        },
+        openGraph: {
+            title: post.title,
+            description: post.description,
+            type: 'article',
+            url: `/blog/${post.slug}`,
+        },
+        twitter: {
+            card: 'summary',
+            title: post.title,
+            description: post.description,
+        },
+    }
+}
+
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
     const post = allBlogs.find((post) => post.slug === slug)
 
