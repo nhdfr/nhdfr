@@ -27,17 +27,22 @@ function BlogPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <h1 className="text-4xl font-bold mb-8">Blog Posts</h1>
-      <div className="divide-y divide-border border rounded-lg">
-        {blogsToShow.map((post) => (
+      <div className="divide-y divide-border border border-border rounded-lg bg-[hsl(var(--card))]">
+        {blogsToShow.map((post, i) => (
           <Link
             key={post._id}
             href={post.url}
-            className="flex items-center justify-between px-4 py-3 hover:bg-accent/40 transition-colors group rounded-none focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="grid grid-cols-[1fr_auto] items-start gap-3 px-4 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition-colors group rounded-none focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             tabIndex={0}
             aria-label={`Read blog post: ${post.title}`}
           >
-            <span className="font-medium  text-base truncate max-w-[70%]">{post.title}</span>
-            <span className="text-muted-foreground text-sm min-w-[120px] text-right">{formatDate(post.date)}</span>
+            <span className="flex items-start gap-3 min-w-0">
+              <span className="w-6 shrink-0 tabular-nums text-foreground/60" aria-hidden>
+                {(start + i + 1).toString()}.
+              </span>
+              <span className="font-medium text-base whitespace-normal break-words">{post.title}</span>
+            </span>
+            <span className="text-muted-foreground text-sm min-w-[120px] text-right justify-self-end">{formatDate(post.date)}</span>
           </Link>
         ))}
       </div>
@@ -46,7 +51,7 @@ function BlogPage() {
         <div className="flex justify-center items-center gap-2 mt-8 select-none">
           <Link
             href={page > 1 ? `/blog?page=${page - 1}` : '#'}
-            className={`flex items-center gap-1 px-2 py-1 text-sm rounded transition-colors ${page === 1 ? 'text-muted-foreground cursor-not-allowed' : 'hover:bg-accent/40 text-foreground'}`}
+            className={`flex items-center gap-1 px-2 py-1 text-sm rounded-md transition-colors ${page === 1 ? 'text-muted-foreground cursor-not-allowed' : 'hover:bg-black/5 dark:hover:bg-white/5 text-foreground border border-border'}`}
             aria-disabled={page === 1}
             tabIndex={page === 1 ? -1 : 0}
           >
@@ -56,7 +61,7 @@ function BlogPage() {
             <Link
               key={i}
               href={`/blog?page=${i + 1}`}
-              className={`px-2 py-1 rounded text-sm transition-colors ${page === i + 1 ? 'border border-border bg-background' : 'hover:bg-accent/40'} ${page === i + 1 ? 'text-primary' : 'text-foreground'}`}
+              className={`px-2 py-1 rounded-md text-sm transition-colors border ${page === i + 1 ? 'border-border bg-black/5 dark:bg-white/5 text-foreground' : 'border-transparent hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80'}`}
               aria-current={page === i + 1 ? 'page' : undefined}
             >
               {i + 1}
@@ -64,7 +69,7 @@ function BlogPage() {
           ))}
           <Link
             href={page < totalPages ? `/blog?page=${page + 1}` : '#'}
-            className={`flex items-center gap-1 px-2 py-1 text-sm rounded transition-colors ${page === totalPages ? 'text-muted-foreground cursor-not-allowed' : 'hover:bg-accent/40 text-foreground'}`}
+            className={`flex items-center gap-1 px-2 py-1 text-sm rounded-md transition-colors ${page === totalPages ? 'text-muted-foreground cursor-not-allowed' : 'hover:bg-black/5 dark:hover:bg-white/5 text-foreground border border-border'}`}
             aria-disabled={page === totalPages}
             tabIndex={page === totalPages ? -1 : 0}
           >

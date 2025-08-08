@@ -118,8 +118,13 @@ export default function RootLayout({
                     attribute="class"
                     defaultTheme="dark"
                     enableSystem>
+                    {/* Background ornaments */}
+                    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_60%)]" />
+                        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,transparent_70%,rgba(255,255,255,0.03))]" />
+                    </div>
                     <Header />
-                    <main className="flex-1">{children}</main>
+                    <main className="flex-1 relative">{children}</main>
                     <Footer />
                 </ThemeProvider>
             </body>

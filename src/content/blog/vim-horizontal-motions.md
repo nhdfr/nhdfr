@@ -10,64 +10,43 @@ featured: false
 draft: false
 ---
 
-## Vim Horizontal Motions: Mastering Efficient Navigation
+Vim is fast when you stay on the home row. This is a short, practical guide to the horizontal motions I actually use daily—no fluff, just what helps you move quicker.
 
-A structured summary of **essential Vim concepts** for fast, efficient editing—refined for clarity and accuracy.
+## The essentials (you’ll use these constantly)
+- Line navigation:
+  - `_` → jump to first non‑blank on the line
+  - `$` → end of line
+  - `0` → absolute start of line
+- Character jumps (the real speed boost):
+  - `f<char>` / `F<char>` → jump forward/backward to `<char>`
+  - `t<char>` / `T<char>` → like `f/F` but stop before `<char>`
+  - `;` and `,` → repeat the last jump forwards/backwards
+- Combine with operators:
+  - `d` + motion → delete by motion (e.g. `d$`)
+  - `y` + motion → yank by motion (e.g. `yT=` up to but not including `=`)
+  - `v` + motion → visual select by motion
 
----
+Quick example: `dtw` deletes up to (but not including) the next `w`. It’s precise and feels great once it’s in your fingers.
 
-## 1. Essential Vim Motions (Navigate & Edit with Speed)
-- **Line Navigation:**
-  - `_` — Move to the **first non-blank** character of the line.
-  - `$` — Move to the **end** of the line.
-  - `0` — Move to the **absolute start** of the line.
-- **Character Jumps:**
-  - `f<char>` — Jump **forward** to the next occurrence of `<char>` on the line.
-  - `F<char>` — Jump **backward** to `<char>`.
-  - `t<char>` — Jump forward, **stopping just before** `<char>`.
-  - `T<char>` — Jump backward, stopping just before `<char>`.
-  - `;` — Repeat the last **forward** character search (`f`/`t`).
-  - `,` — Repeat the last **backward** character search (`F`/`T`).
-- **Combining Motions with Commands:**
-  - `d` + motion — **Delete** text by motion (e.g., `d$` deletes to end of line).
-  - `y` + motion — **Yank (copy)** by motion (e.g., `yT=` yanks up to but not including `=`).
-  - `v` + motion — **Visually select** by motion.
-  - Example: `dtw` — Delete up to (but not including) the next occurrence of "w".
+## Insert and append, without leaving the line
+- `I` → insert at start of line
+- `A` → append at end of line
+- `o` / `O` → open a new line below/above and enter insert mode
 
----
+## Buffers and windows (in one minute)
+- A buffer is just an in‑memory file. A window is a view onto a buffer.
+- You can show the same buffer in multiple windows; edits stay in sync.
+- Move between buffers with `:bnext` / `:bprev`. Close a buffer from memory with `:bd` (closing a window doesn’t remove the buffer).
 
-## 2. Inserting Text Efficiently
-- `I` — Insert at the **start** of the line.
-- `A` — Append at the **end** of the line.
-- `o` — **Open a new line below** and enter insert mode.
-- `O` — **Open a new line above** and enter insert mode.
+## Plugins I actually keep
+- Telescope → a flexible fuzzy finder I reach for daily.
+- Harpoon → quick file marks for jumping around a project.
 
----
+My rule: add plugins only when a problem repeats. Prefer a small, boring setup and a few well‑chosen keymaps (e.g. `<leader>pv` for quick file nav).
 
-## 3. Buffers, Windows, and Navigation
-- **Buffer:** In-memory file or data being edited. Multiple windows can show the same buffer; changes sync across all.
-- **Window:** A viewport displaying a buffer. You can have multiple windows for the same or different buffers.
-- **Switching Buffers:** Use `:bnext` / `:bprev` to cycle. Closing a window does **not** delete the buffer; use `:bd` to remove it from memory.
+## Takeaways
+- Learn `f/t` and friends; they’re the biggest speedup.
+ - Let operators do the work: `d`/`y`/`v` + motion.
+- Keep your setup lean so your brain remembers the few things that matter.
 
----
-
-## 4. Plugins and Customization
-- **Telescope:** Fuzzy finder for files, branches, and more. Highly customizable; similar to FZF but more extensible.
-- **Harpoon:** Bookmark and quickly switch between frequently used files.
-- **Philosophy:**
-  - Only install plugins when you have a clear need.
-  - Prefer minimalism—avoid plugin bloat.
-  - Remap keys for your workflow (e.g., `<Leader>pv` for quick file navigation).
-  - If a plugin doesn't exist, consider writing your own.
-
-
-
-## 5. Key Takeaways & Next Steps
-- Mastering motions (`f`, `t`, etc.) **greatly increases editing speed**.
-- Understand buffers/windows to manage files efficiently.
-- Use minimal, purposeful plugins and customize key mappings.
-- Next: Explore **vertical motions** and **marks** for even faster navigation. Consider scripting repetitive tasks.
-
----
-
-This guide distills the **core Vim concepts** for efficient navigation and editing, with misconceptions corrected and distractions removed. 
+That’s it. Next up: vertical motions and marks—and maybe a tiny script for the repetitive stuff you do every day.
