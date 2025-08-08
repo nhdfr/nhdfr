@@ -13,7 +13,7 @@ export default function HomePage() {
     return (
         <>
             <InfoCard />
-            <div className="container mx-auto px-4 py-8 max-w-4xl">
+            <main id="main" className="container mx-auto px-4 py-8 max-w-4xl">
                 {/* Blog List */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-4">Latest Blog Posts</h2>
@@ -30,7 +30,12 @@ export default function HomePage() {
                                     <span className="hidden sm:block w-6 shrink-0 tabular-nums text-foreground/60" aria-hidden>
                                         {(i + 1).toString()}.
                                     </span>
-                                    <span className="font-medium text-base whitespace-normal break-words leading-snug line-clamp-2 pr-2">{post.title}</span>
+                                    <span className="font-medium text-base whitespace-normal break-words leading-snug line-clamp-2 pr-2 flex items-center gap-2">
+                                        {post.title}
+                                        <span className="opacity-0 translate-x-[-2px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" aria-hidden>
+                                            →
+                                        </span>
+                                    </span>
                                 </span>
                                 <span className="self-end sm:self-auto text-muted-foreground text-[11px] sm:text-sm whitespace-nowrap sm:min-w-[120px] sm:text-right sm:justify-self-end mt-0.5 sm:mt-0">{formatDate(post.date)}</span>
                             </Link>
@@ -69,7 +74,7 @@ export default function HomePage() {
                         </Link>
                     </div>
                 </section>
-            </div>
+            </main>
         </>
     )
 }
