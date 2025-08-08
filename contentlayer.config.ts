@@ -148,7 +148,7 @@ export default makeSource({
         rehypePlugins: [
             rehypeSlug,
             rehypeAutolinkHeadings,
-            [rehypePrettyCode, { theme: 'vitesse-dark' }] as any,
+            [rehypePrettyCode, { theme: 'github-dark-dimmed', keepBackground: false }] as any,
         ],
     },
 })

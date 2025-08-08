@@ -17,17 +17,22 @@ export default function HomePage() {
                 {/* Blog List */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-4">Latest Blog Posts</h2>
-                    <div className="divide-y divide-border border rounded-lg bg-background/70">
-                        {recentBlogs.map((post) => (
+                    <div className="divide-y divide-border border border-border rounded-lg bg-[hsl(var(--card))]">
+                        {recentBlogs.map((post, i) => (
                             <Link
                                 key={post._id}
                                 href={post.url}
-                                className="flex items-center justify-between px-4 py-3 hover:bg-accent/40 transition-colors group rounded-none focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                                className="grid grid-cols-[1fr_auto] items-start gap-3 px-4 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition-colors group rounded-none focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                                 tabIndex={0}
                                 aria-label={`Read blog post: ${post.title}`}
                             >
-                                <span className="font-medium  text-base truncate max-w-[70%]">{post.title}</span>
-                                <span className="text-muted-foreground text-sm min-w-[120px] text-right">{formatDate(post.date)}</span>
+                                <span className="flex items-start gap-3 min-w-0">
+                                    <span className="w-6 shrink-0 tabular-nums text-foreground/60" aria-hidden>
+                                        {(i + 1).toString()}.
+                                    </span>
+                                    <span className="font-medium text-base whitespace-normal break-words">{post.title}</span>
+                                </span>
+                                <span className="text-muted-foreground text-sm min-w-[120px] text-right justify-self-end">{formatDate(post.date)}</span>
                             </Link>
                         ))}
                     </div>
@@ -47,9 +52,9 @@ export default function HomePage() {
                 {/* Projects Section */}
                 <section>
                     <h2 className="text-2xl font-semibold mb-4">Featured Projects</h2>
-                    <div className="grid gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {featuredProjects.map((project) => (
-                            <ProjectCard key={project._id} project={project} /* compact={true} */ />
+                            <ProjectCard key={project._id} project={project} />
                         ))}
                     </div>
                     <div className="flex justify-center mt-4">

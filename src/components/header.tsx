@@ -14,12 +14,19 @@ export default function Header() {
     return (
         <header className="bg-background/50 sticky top-0 z-10 backdrop-blur-md">
             <div className="container mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-4 p-4">
-                <Link href="/" className="font-bold flex shrink-0 items-center gap-2 text-xl">
-                    <img src="/header.png" alt="Dex logo" className="w-20 max-h-14 object-contain" />
+                <Link href="/" className="flex shrink-0 items-center gap-2 text-sm font-medium tracking-tight">
+                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border bg-black/5 dark:bg-white/5">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 text-foreground/90">
+                            <path d="M7.5 9 L9.5 4 L11 8.5 Z" fill="currentColor"/>
+                            <path d="M16.5 9 L14.5 4 L13 8.5 Z" fill="currentColor"/>
+                            <circle cx="12" cy="13" r="6.5" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span className="text-foreground/90">Dex</span>
                     <span className="sr-only">{SITE.title}</span>
                 </Link>
                 {/* Desktop nav */}
-                <div className="hidden md:flex items-center gap-2 md:gap-4">
+                <div className="hidden md:flex items-center gap-4">
                     <nav className="flex items-center gap-4 text-sm sm:gap-6">
                         {NAV_LINKS.map((item) => (
                             <Link
