@@ -1,8 +1,11 @@
+"use client"
+
 import Link from "next/link"
 import { SITE, NAV_LINKS } from "@/const"
 import { ModeToggle } from "./theme-toggle"
 import { Button } from "./ui/button"
 import { Menu } from "lucide-react"
+import { usePathname } from "next/navigation"
 import {
     DropdownMenu,
     DropdownMenuTrigger,
@@ -11,8 +14,12 @@ import {
 } from "./ui/dropdown-menu"
 
 export default function Header() {
+    const pathname = usePathname()
     return (
-        <header className="bg-background/50 sticky top-0 z-10 backdrop-blur-md">
+        <header className="sticky top-0 z-10 bg-background/50 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 border-b border-border/60">
+            <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-background text-foreground px-3 py-2 rounded">
+                Skip to content
+            </a>
             <div className="container mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-4 p-4">
                 <Link href="/" className="flex shrink-0 items-center gap-2 text-sm font-medium tracking-tight">
                     <span className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border bg-black/5 dark:bg-white/5">
@@ -28,15 +35,19 @@ export default function Header() {
                 {/* Desktop nav */}
                 <div className="hidden md:flex items-center gap-4">
                     <nav className="flex items-center gap-4 text-sm sm:gap-6">
-                        {NAV_LINKS.map((item) => (
-                            <Link
-                                key={item.href}
-                                href={item.href}
-                                className="text-foreground/60 hover:text-foreground/80 capitalize transition-colors"
-                            >
-                                {item.label}
-                            </Link>
-                        ))}
+                        {NAV_LINKS.map((item) => {
+                            const isActive = pathname === item.href
+                            return (
+                                <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    aria-current={isActive ? "page" : undefined}
+                                    className={`capitalize transition-colors ${isActive ? "text-foreground" : "text-foreground/60 hover:text-foreground/80"}`}
+                                >
+                                    {item.label}
+                                </Link>
+                            )
+                        })}
                         <ModeToggle />
                     </nav>
                 </div>
