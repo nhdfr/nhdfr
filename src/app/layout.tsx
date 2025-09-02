@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     description: "Welcome to my playground for ideas that might someday catch fire (sometimes literally). I share code, workflow tricks, automation, and honest stories about building and breaking things.",
     keywords: [
         "playground",
+        "d3xfoo",
         "experiments",
         "personal projects",
         "code",
