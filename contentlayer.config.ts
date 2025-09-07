@@ -125,7 +125,10 @@ export const Project = defineDocumentType(() => ({
         },
     },
     computedFields: {
-        // Removed slug field
+        slug: {
+            type: 'string',
+            resolve: (doc) => createSlug(doc.title),
+        },
         url: {
             type: 'string',
             resolve: (doc) => `/project/${createSlug(doc.title)}`,
