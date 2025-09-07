@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://d3x.foo/blog/vim-horizontal-motions-mastering-efficient-navigation</loc><lastmod>2025-08-08T22:42:29.493Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://d3x.foo/icon.svg</loc><lastmod>2025-08-08T22:42:29.493Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://d3x.foo/blog</loc><lastmod>2025-08-08T22:42:29.493Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://d3x.foo/project</loc><lastmod>2025-08-08T22:42:29.493Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://d3x.foo</loc><lastmod>2025-08-08T22:42:29.493Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://d3x.foo/rss.xml</loc><lastmod>2025-08-08T22:42:29.493Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://d3x.foo/rss.xml</loc><lastmod>2025-09-07T09:31:28.701Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://d3x.foo/project</loc><lastmod>2025-09-07T09:31:28.701Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://d3x.foo/blog</loc><lastmod>2025-09-07T09:31:28.701Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://d3x.foo</loc><lastmod>2025-09-07T09:31:28.701Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://d3x.foo/blog/how-to-manage-multiple-sessions-in-github</loc><lastmod>2025-09-07T09:31:28.701Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://d3x.foo/blog/my-keyboard-layout-for-vim-and-terminal-based-workflow-non-split</loc><lastmod>2025-09-07T09:31:28.701Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://d3x.foo/blog/the-complete-markdown-syntax-handbook</loc><lastmod>2025-09-07T09:31:28.701Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://d3x.foo/blog/vim-horizontal-motions-mastering-efficient-navigation</loc><lastmod>2025-09-07T09:31:28.701Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://d3x.foo/project/advent-of-code-automation-typescript</loc><lastmod>2025-09-07T09:31:28.701Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://d3x.foo/project/sweet-commit</loc><lastmod>2025-09-07T09:31:28.701Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://d3x.foo/project/wimg-an-image-operations-tool-go</loc><lastmod>2025-09-07T09:31:28.701Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
