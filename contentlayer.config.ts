@@ -5,12 +5,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
 import type { Options } from 'rehype-pretty-code'
 
-const createSlug = (title: string): string => {
-    return title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)/g, '')
-}
+
 
 export const Blog = defineDocumentType(() => ({
     name: 'Blog',
@@ -49,11 +44,11 @@ export const Blog = defineDocumentType(() => ({
     computedFields: {
         slug: {
             type: 'string',
-            resolve: (doc) => createSlug(doc.title),
+            resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
         },
         url: {
             type: 'string',
-            resolve: (doc) => `/blog/${createSlug(doc.title)}`,
+            resolve: (doc) => `/blog/${doc._raw.flattenedPath.split('/').slice(1).join('/')}`,
         },
     },
 }))
@@ -127,11 +122,11 @@ export const Project = defineDocumentType(() => ({
     computedFields: {
         slug: {
             type: 'string',
-            resolve: (doc) => createSlug(doc.title),
+            resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
         },
         url: {
             type: 'string',
-            resolve: (doc) => `/project/${createSlug(doc.title)}`,
+            resolve: (doc) => `/project/${doc._raw.flattenedPath.split('/').slice(1).join('/')}`,
         },
     },
 }))
