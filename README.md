@@ -1,4 +1,17 @@
-# Dex's Playground
+### About me
 
-A personal playground for experiments, code, and creative projects by Dex. Explore tools, workflows, and honest write-ups about what works (and what breaks).
+I write TypeScript and love building performant, reliable and optimized software that solves actual problems.
 
+Good workflow saves time. Bad workflow destroys souls.
+
+**Setup:** VIM • Ghostty • Tmux • i3 • zsh
+
+**Facts:**
+
+- Deep into keyboard keybindings (probably weird ones)
+- 6 cats
+- Workflow optimization addict
+- Tinker with hardware and SBCs
+- Run home servers because why not
+
+That's it.
