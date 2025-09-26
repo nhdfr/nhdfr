@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import ScrollIndicator from "@/components/scroll-indicator";
 import { Analytics } from '@vercel/analytics/next';
 
 const geistSans = Geist({
@@ -120,15 +121,16 @@ export default function RootLayout({
                     attribute="class"
                     defaultTheme="dark"
                     enableSystem>
-                    {/* Background ornaments */}
+                    {/* Subtle background gradient */}
                     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_60%)]" />
-                        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,transparent_70%,rgba(255,255,255,0.03))]" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.02),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.01),transparent_70%)]" />
                     </div>
                     <Header />
                     <main className="flex-1 relative">{children}</main>
                     <Analytics />
                     <Footer />
+                    <ScrollIndicator />
                 </ThemeProvider>
             </body>
         </html>

@@ -25,55 +25,83 @@ function BlogPage() {
   const blogsToShow = publishedBlogs.slice(start, end)
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8">Blog Posts</h1>
-      <div className="space-y-3 sm:space-y-0 sm:divide-y sm:divide-border sm:border sm:border-border sm:rounded-lg sm:bg-[hsl(var(--card))]">
+    <div className="container mx-auto px-6 py-12 max-w-5xl">
+      <div className="mb-12">
+        <h1 className="text-4xl md:text-5xl font-light tracking-tight mb-4">Writing</h1>
+        <p className="text-lg text-muted-foreground">
+          Thoughts on development, tools, and the occasional life lesson.
+        </p>
+      </div>
+      
+      <div className="space-y-1">
         {blogsToShow.map((post, i) => (
           <Link
             key={post._id}
             href={post.url}
-            className="flex flex-col gap-2 sm:grid sm:grid-cols-[1fr_auto] items-start sm:items-center px-4 py-3 border border-border rounded-md bg-background/70 sm:border-none sm:rounded-none sm:bg-transparent hover:bg-black/5 dark:hover:bg-white/5 transition-colors group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="group block p-6 rounded-xl hover:bg-muted/30 smooth-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             tabIndex={0}
             aria-label={`Read blog post: ${post.title}`}
           >
-            <span className="flex items-start gap-2 sm:gap-3 min-w-0 w-full">
-              <span className="hidden sm:block w-6 shrink-0 tabular-nums text-foreground/60" aria-hidden>
-                {(start + i + 1).toString()}.
-              </span>
-              <span className="font-medium text-base whitespace-normal break-words leading-snug line-clamp-2 pr-2">{post.title}</span>
-            </span>
-            <span className="self-end sm:self-auto text-muted-foreground text-[11px] sm:text-sm whitespace-nowrap sm:min-w-[120px] sm:text-right sm:justify-self-end mt-0.5 sm:mt-0">{formatDate(post.date)}</span>
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex-1 min-w-0">
+                <h2 className="font-medium text-lg leading-snug text-foreground group-hover:text-primary smooth-transition mb-2">
+                  {post.title}
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  {formatDate(post.date)}
+                </p>
+              </div>
+              <div className="flex-shrink-0 w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 smooth-transition">
+                →
+              </div>
+            </div>
           </Link>
         ))}
       </div>
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex justify-center items-center gap-2 mt-8 select-none">
+        <div className="flex justify-center items-center gap-3 mt-12">
           <Link
             href={page > 1 ? `/blog?page=${page - 1}` : '#'}
-            className={`flex items-center gap-1 px-2 py-1 text-sm rounded-md transition-colors ${page === 1 ? 'text-muted-foreground cursor-not-allowed' : 'hover:bg-black/5 dark:hover:bg-white/5 text-foreground border border-border'}`}
+            className={`flex items-center gap-2 px-4 py-2 text-sm rounded-lg smooth-transition ${
+              page === 1 
+                ? 'text-muted-foreground cursor-not-allowed' 
+                : 'text-foreground hover:bg-muted/50 border border-border/50'
+            }`}
             aria-disabled={page === 1}
             tabIndex={page === 1 ? -1 : 0}
           >
-            &lt; Previous
+            ← Previous
           </Link>
-          {[...Array(totalPages)].map((_, i) => (
-            <Link
-              key={i}
-              href={`/blog?page=${i + 1}`}
-              className={`px-2 py-1 rounded-md text-sm transition-colors border ${page === i + 1 ? 'border-border bg-black/5 dark:bg-white/5 text-foreground' : 'border-transparent hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80'}`}
-              aria-current={page === i + 1 ? 'page' : undefined}
-            >
-              {i + 1}
-            </Link>
-          ))}
+          
+          <div className="flex items-center gap-1">
+            {[...Array(totalPages)].map((_, i) => (
+              <Link
+                key={i}
+                href={`/blog?page=${i + 1}`}
+                className={`px-3 py-2 rounded-lg text-sm smooth-transition ${
+                  page === i + 1 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'
+                }`}
+                aria-current={page === i + 1 ? 'page' : undefined}
+              >
+                {i + 1}
+              </Link>
+            ))}
+          </div>
+          
           <Link
             href={page < totalPages ? `/blog?page=${page + 1}` : '#'}
-            className={`flex items-center gap-1 px-2 py-1 text-sm rounded-md transition-colors ${page === totalPages ? 'text-muted-foreground cursor-not-allowed' : 'hover:bg-black/5 dark:hover:bg-white/5 text-foreground border border-border'}`}
+            className={`flex items-center gap-2 px-4 py-2 text-sm rounded-lg smooth-transition ${
+              page === totalPages 
+                ? 'text-muted-foreground cursor-not-allowed' 
+                : 'text-foreground hover:bg-muted/50 border border-border/50'
+            }`}
             aria-disabled={page === totalPages}
             tabIndex={page === totalPages ? -1 : 0}
           >
-            Next &gt;
+            Next →
           </Link>
         </div>
       )}
