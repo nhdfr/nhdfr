@@ -6,43 +6,48 @@ import { ArrowRight } from "lucide-react";
 const InfoCard = () => {
   return (
     <section
-      className="container mx-auto px-4 pt-12 pb-8 max-w-4xl"
+      className="container mx-auto px-6 pt-16 pb-12 max-w-5xl"
       aria-labelledby="site-hero"
     >
-      <div className="rounded-lg border bg-background/60 backdrop-blur-md shadow-sm p-6">
-        <h1
-          id="site-hero"
-          className="text-3xl md:text-4xl font-semibold tracking-tight"
-        >
-          About me!
-        </h1>
-        <p className="mt-3 text-foreground/90 text-sm md:text-base max-w-2xl">
-          I write TypeScript and build web apps that don't suck. Currently
-          obsessed with performance, clean architecture, and making developers'
-          lives easier through better tooling.
-        </p>
+      <div className="relative">
+        {/* Subtle background accent */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 rounded-2xl" />
+        
+        <div className="relative p-8 md:p-12">
+          <div className="max-w-3xl">
+            <h1
+              id="site-hero"
+              className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-balance mb-6"
+            >
+              Hi, I'm <span className="gradient-text font-medium">Dex</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 text-balance">
+              I write TypeScript and build web applications that don't suck. Currently
+              obsessed with performance, clean architecture, and making developers'
+              lives easier through better tooling and automation.
+            </p>
 
-        <div className="mt-4 flex flex-wrap gap-2 text-xs text-muted-foreground">
-          <span>React/Node.js</span>
-          <span aria-hidden>•</span>
-          <span>VIM devotee</span>
-          <span aria-hidden>•</span>
-          <span>Home server tinkerer</span>
-          <span aria-hidden>•</span>
-          <span>6 cats</span>
-        </div>
+            <div className="flex flex-wrap gap-3 text-sm text-muted-foreground mb-10">
+              <span className="px-3 py-1.5 rounded-full bg-muted/50 border border-border/50">React/Node.js</span>
+              <span className="px-3 py-1.5 rounded-full bg-muted/50 border border-border/50">VIM devotee</span>
+              <span className="px-3 py-1.5 rounded-full bg-muted/50 border border-border/50">Home server tinkerer</span>
+              <span className="px-3 py-1.5 rounded-full bg-muted/50 border border-border/50">6 cats</span>
+            </div>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/blog" className="inline-flex">
-            <Button size="sm" className="gap-2">
-              Read the blog <ArrowRight size={16} aria-hidden />
-            </Button>
-          </Link>
-          <Link href="/project" className="inline-flex">
-            <Button size="sm" variant="ghost" className="gap-2">
-              View projects <ArrowRight size={16} aria-hidden />
-            </Button>
-          </Link>
+            <div className="flex flex-wrap gap-4">
+              <Link href="/blog" className="inline-flex">
+                <Button size="lg" className="gap-2 hover-lift smooth-transition">
+                  Read the blog <ArrowRight size={18} aria-hidden />
+                </Button>
+              </Link>
+              <Link href="/project" className="inline-flex">
+                <Button size="lg" variant="outline" className="gap-2 hover-lift smooth-transition">
+                  View projects <ArrowRight size={18} aria-hidden />
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

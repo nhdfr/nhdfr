@@ -16,25 +16,25 @@ import {
 export default function Header() {
     const pathname = usePathname()
     return (
-        <header className="sticky top-0 z-10 bg-background/50 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 border-b border-border/60">
-            <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-background text-foreground px-3 py-2 rounded">
+        <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/90 border-b border-border/30">
+            <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-background text-foreground px-3 py-2 rounded-md">
                 Skip to content
             </a>
-            <div className="container mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-4 p-4">
-                <Link href="/" className="flex shrink-0 items-center gap-2 text-sm font-medium tracking-tight">
-                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border bg-black/5 dark:bg-white/5">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 text-foreground/90">
+            <div className="container mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
+                <Link href="/" className="flex shrink-0 items-center gap-3 text-sm font-medium tracking-tight group">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 group-hover:border-primary/30 smooth-transition">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 text-primary">
                             <path d="M7.5 9 L9.5 4 L11 8.5 Z" fill="currentColor"/>
                             <path d="M16.5 9 L14.5 4 L13 8.5 Z" fill="currentColor"/>
                             <circle cx="12" cy="13" r="6.5" fill="currentColor"/>
                         </svg>
                     </span>
-                    <span className="text-foreground/90">Dex</span>
+                    <span className="text-foreground font-medium">Dex</span>
                     <span className="sr-only">{SITE.title}</span>
                 </Link>
                 {/* Desktop nav */}
-                <div className="hidden md:flex items-center gap-4">
-                    <nav className="flex items-center gap-4 text-sm sm:gap-6">
+                <div className="hidden md:flex items-center gap-6">
+                    <nav className="flex items-center gap-8 text-sm">
                         {NAV_LINKS.map((item) => {
                             const isActive = pathname === item.href
                             return (
@@ -42,14 +42,21 @@ export default function Header() {
                                     key={item.href}
                                     href={item.href}
                                     aria-current={isActive ? "page" : undefined}
-                                    className={`capitalize transition-colors ${isActive ? "text-foreground" : "text-foreground/60 hover:text-foreground/80"}`}
+                                    className={`capitalize font-medium smooth-transition relative ${
+                                        isActive 
+                                            ? "text-foreground" 
+                                            : "text-muted-foreground hover:text-foreground"
+                                    }`}
                                 >
                                     {item.label}
+                                    {isActive && (
+                                        <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                                    )}
                                 </Link>
                             )
                         })}
-                        <ModeToggle />
                     </nav>
+                    <ModeToggle />
                 </div>
                 {/* Mobile nav */}
                 <div className="flex md:hidden items-center gap-2">
