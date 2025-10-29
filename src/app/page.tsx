@@ -15,10 +15,10 @@ export default function HomePage() {
   ];
 
   const contactLinks = [
-    { label: "email", url: "mailto:you@example.com" },
+    { label: "email", url: "mailto:nhdfr.dev@gmail.com" },
     { label: "github", url: "https://github.com/nhdfr" },
-    { label: "x.com", url: "https://x.com/d3xfoo" },
-    { label: "discord", url: "https://discord.com/users/your-id" },
+    { label: "x.com", url: "https://x.com/nhdfrrr" },
+    { label: "discord", url: "https://discord.com/users/#" },
   ];
 
   return (

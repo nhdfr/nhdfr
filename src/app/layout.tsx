@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import ScrollIndicator from "@/components/scroll-indicator";
 import { Analytics } from '@vercel/analytics/next';
 
 const geistSans = Geist({
@@ -18,48 +15,47 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Dex’s Playground – Experiments, Projects & Honest Write-ups",
-    description: "Welcome to my playground for ideas that might someday catch fire (sometimes literally). I share code, workflow tricks, automation, and honest stories about building and breaking things.",
+    title: "nhd",
+    description: "",
     keywords: [
-        "playground",
-        "d3xfoo",
-        "experiments",
-        "personal projects",
+        "nhd",
+        "nhdfr",
+        "tui",
+        "terminal",
         "code",
         "automation",
         "VIM",
         "Linux",
         "TypeScript",
+        "golang",
+        "go",
         "blog",
         "workflow",
         "dotfiles",
-        "creative coding",
-        "developer",
-        "Dex"
     ],
-    authors: [{ name: "Dex" }],
-    creator: "Dex",
-    publisher: "Dex",
+    authors: [{ name: "nhd" }],
+    creator: "nhd",
+    publisher: "nhd",
     formatDetection: {
         email: false,
         address: false,
         telephone: false,
     },
-    metadataBase: new URL("https://d3x.foo"),
+    metadataBase: new URL("https://nhdfr.dev"),
     alternates: {
         canonical: "/",
     },
     openGraph: {
-        title: "Dex’s Playground – Experiments, Projects & Honest Write-ups",
-        description: "Welcome to my playground for ideas that might someday catch fire (sometimes literally). I share code, workflow tricks, automation, and honest stories about building and breaking things.",
-        url: "https://d3x.foo",
-        siteName: "Dex’s Playground",
+        title: "nhd",
+        description: "",
+        url: "https://nhdfr.dev",
+        siteName: "nhd",
         images: [
             {
                 url: "/web-app-manifest-512x512.png",
                 width: 512,
                 height: 512,
-                alt: "Dex’s Playground",
+                alt: "nhd",
             },
         ],
         locale: "en_US",
@@ -67,8 +63,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Dex’s Playground – Experiments, Projects & Honest Write-ups",
-        description: "Welcome to my playground for ideas that might someday catch fire (sometimes literally). I share code, workflow tricks, automation, and honest stories about building and breaking things.",
+        title: "nhd",
+        description: "I spend most of my time building terminal tools and web apps, along with some fun side projects, gradually diving into core backend & systems stuff",
         images: ["/web-app-manifest-512x512.png"],
     },
     robots: {
@@ -121,16 +117,11 @@ export default function RootLayout({
                     attribute="class"
                     defaultTheme="dark"
                     enableSystem>
-                    {/* Subtle background gradient */}
                     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-                        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
-                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.02),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.01),transparent_70%)]" />
+                        <div className="absolute inset-0 bg-[#191724]" />
                     </div>
-                    <Header />
                     <main className="flex-1 relative">{children}</main>
                     <Analytics />
-                    <Footer />
-                    <ScrollIndicator />
                 </ThemeProvider>
             </body>
         </html>
