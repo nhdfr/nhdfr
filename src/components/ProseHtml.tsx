@@ -38,7 +38,6 @@ export default function ProseHtml({ html }: ProseHtmlProps) {
             button.classList.remove("bg-white/10")
           }, 1200)
         } catch {
-          // ignore
         }
       })
 

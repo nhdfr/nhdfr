@@ -1,11 +1,12 @@
 "use client"
 import { Suspense } from 'react'
 import { allBlogs } from 'contentlayer/generated'
-import { sortByDate, formatDate } from '@/lib/time'
+import { sortByDate } from '@/lib/time'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import PageLayout from '@/components/PageLayout'
 
-const POSTS_PER_PAGE = 10
+const POSTS_PER_PAGE = 12
 
 export default function BlogPageWrapper() {
   return (
@@ -25,86 +26,68 @@ function BlogPage() {
   const blogsToShow = publishedBlogs.slice(start, end)
 
   return (
-    <div className="container mx-auto px-6 py-12 max-w-5xl">
-      <div className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-light tracking-tight mb-4">Writing</h1>
-        <p className="text-lg text-muted-foreground">
-          Thoughts on development, tools, and the occasional life lesson.
-        </p>
-      </div>
-      
-      <div className="space-y-1">
-        {blogsToShow.map((post, i) => (
-          <Link
-            key={post._id}
-            href={post.url}
-            className="group block p-6 rounded-xl hover:bg-muted/30 smooth-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            tabIndex={0}
-            aria-label={`Read blog post: ${post.title}`}
-          >
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex-1 min-w-0">
-                <h2 className="font-medium text-lg leading-snug text-foreground group-hover:text-primary smooth-transition mb-2">
-                  {post.title}
-                </h2>
-                <p className="text-sm text-muted-foreground">
-                  {formatDate(post.date)}
-                </p>
-              </div>
-              <div className="flex-shrink-0 w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 smooth-transition">
-                →
-              </div>
-            </div>
-          </Link>
+    <PageLayout title="Writings">
+      <div className="space-y-2">
+        {blogsToShow.map((post) => (
+          <div key={post._id} className="flex items-center justify-between gap-4 py-1 text-sm">
+            <Link
+              href={post.url}
+              className="text-[#9ccfd8] hover:text-[#eb6f92] transition-colors flex-1 truncate"
+            >
+              {post.title}
+            </Link>
+            <time className="text-[#6e6a86] shrink-0">
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </time>
+          </div>
         ))}
       </div>
+
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex justify-center items-center gap-3 mt-12">
-          <Link
-            href={page > 1 ? `/blog?page=${page - 1}` : '#'}
-            className={`flex items-center gap-2 px-4 py-2 text-sm rounded-lg smooth-transition ${
-              page === 1 
-                ? 'text-muted-foreground cursor-not-allowed' 
-                : 'text-foreground hover:bg-muted/50 border border-border/50'
-            }`}
-            aria-disabled={page === 1}
-            tabIndex={page === 1 ? -1 : 0}
-          >
-            ← Previous
-          </Link>
-          
-          <div className="flex items-center gap-1">
-            {[...Array(totalPages)].map((_, i) => (
+        <div className="mt-8 pt-6 border-t border-dashed border-[#31748f]">
+          <div className="flex justify-center items-center gap-2 text-sm font-mono">
+            {page > 1 && (
               <Link
-                key={i}
-                href={`/blog?page=${i + 1}`}
-                className={`px-3 py-2 rounded-lg text-sm smooth-transition ${
-                  page === i + 1 
-                    ? 'bg-primary text-primary-foreground' 
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'
-                }`}
-                aria-current={page === i + 1 ? 'page' : undefined}
+                href={`/blog?page=${page - 1}`}
+                className="text-[#9ccfd8] hover:text-[#eb6f92] transition-colors underline"
               >
-                {i + 1}
+                ← prev
               </Link>
-            ))}
+            )}
+            
+            <div className="flex items-center gap-1">
+              {[...Array(totalPages)].map((_, i) => (
+                <Link
+                  key={i}
+                  href={`/blog?page=${i + 1}`}
+                  className={`px-2 py-1 transition-colors ${
+                    page === i + 1 
+                      ? 'text-[#e0def4] bg-[#26233a]' 
+                      : 'text-[#9ccfd8] hover:text-[#eb6f92]'
+                  }`}
+                  aria-current={page === i + 1 ? 'page' : undefined}
+                >
+                  {i + 1}
+                </Link>
+              ))}
+            </div>
+            
+            {page < totalPages && (
+              <Link
+                href={`/blog?page=${page + 1}`}
+                className="text-[#9ccfd8] hover:text-[#eb6f92] transition-colors underline"
+              >
+                next →
+              </Link>
+            )}
           </div>
-          
-          <Link
-            href={page < totalPages ? `/blog?page=${page + 1}` : '#'}
-            className={`flex items-center gap-2 px-4 py-2 text-sm rounded-lg smooth-transition ${
-              page === totalPages 
-                ? 'text-muted-foreground cursor-not-allowed' 
-                : 'text-foreground hover:bg-muted/50 border border-border/50'
-            }`}
-            aria-disabled={page === totalPages}
-            tabIndex={page === totalPages ? -1 : 0}
-          >
-            Next →
-          </Link>
         </div>
       )}
-    </div>
+    </PageLayout>
   )
 }

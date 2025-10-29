@@ -1,27 +1,38 @@
 import { allProjects } from 'contentlayer/generated'
 import { sortByDate } from '@/lib/time'
-import ProjectCard from '@/components/ProjectCard'
+import { getAllCategories } from '@/lib/categories'
+import PageLayout from '@/components/PageLayout'
+import ProjectGrid from '@/components/ProjectGrid'
 
 export default function ProjectsPage() {
-  const sortedProjects = sortByDate(allProjects)
+  const categories = getAllCategories()
 
   return (
-    <>
-      
-      <div className="container mx-auto px-6 py-12 max-w-5xl">
-        <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-light tracking-tight mb-4">Projects</h1>
-          <p className="text-lg text-muted-foreground">
-            A collection of tools, experiments, and side projects I've built.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sortedProjects.map((project) => (
-            <ProjectCard key={project._id} project={project} />
-          ))}
-        </div>
-      </div>
-    </>
+    <PageLayout title="Projects">
+      {categories.map((category) => {
+        const projectsInCategory = sortByDate(
+          allProjects.filter((project) => project.category === category.id)
+        )
+
+        if (projectsInCategory.length === 0) return null
+
+        return (
+          <div key={category.id} className="mb-12">
+            <div className="mb-4">
+              <h3 className="text-2xl font-semibold text-[#e0def4] mb-1">
+                {category.label}
+              </h3>
+              <p className="text-[#908caa] text-sm">
+                {category.description}
+              </p>
+            </div>
+            <ProjectGrid projects={projectsInCategory} columns={2} />
+            {categories.length > 1 && categories[categories.length - 1].id !== category.id && (
+              <div className="border-t border-dashed border-[#31748f] my-8"></div>
+            )}
+          </div>
+        )
+      })}
+    </PageLayout>
   )
 }

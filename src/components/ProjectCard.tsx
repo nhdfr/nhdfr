@@ -1,5 +1,5 @@
-import { Github, Globe } from 'lucide-react'
 import type { Project } from 'contentlayer/generated'
+import Link from 'next/link'
 
 interface ProjectCardProps {
     project: Project
@@ -7,46 +7,32 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
     return (
-        <div className="group relative p-6 rounded-2xl bg-gradient-to-br from-card/50 to-card/30 border border-border/50 hover:border-border hover:shadow-lg smooth-transition hover-lift">
-            {/* Subtle background gradient on hover */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 smooth-transition" />
-            
-            <div className="relative">
-                <div className="flex items-start justify-between gap-4 mb-4">
-                    <h3 className="text-lg font-medium leading-tight tracking-tight text-foreground group-hover:text-primary smooth-transition">
-                        {project.title}
-                    </h3>
-                    <div className="flex items-center gap-2 shrink-0">
-                        {project.github && (
-                            <a
-                                href={project.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="View on GitHub"
-                                className="inline-flex items-center justify-center rounded-lg h-9 w-9 bg-muted/50 border border-border/50 hover:bg-muted hover:border-border smooth-transition"
-                            >
-                                <Github size={16} className="text-muted-foreground" />
-                            </a>
-                        )}
-                        {project.demo && (
-                            <a
-                                href={project.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Open website"
-                                className="inline-flex items-center justify-center rounded-lg h-9 w-9 bg-muted/50 border border-border/50 hover:bg-muted hover:border-border smooth-transition"
-                            >
-                                <Globe size={16} className="text-muted-foreground" />
-                            </a>
-                        )}
-                    </div>
+        <div className="border border-[#31748f] rounded bg-[#1f1d2e] p-5   transition-all">
+            <Link
+                href={project.github || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+            >
+                <h3 className="text-[#9ccfd8] group-hover:text-[#eb6f92] font-semibold text-base mb-3 transition-colors line-clamp-1">
+                    {project.title}
+                </h3>
+            </Link>
+            <p className="text-[#908caa] text-sm mb-4 leading-relaxed line-clamp-3">
+                {project.description}
+            </p>
+            {project.technologies && project.technologies.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                    {project.technologies.slice(0, 3).map((tech, index) => (
+                        <span
+                            key={index}
+                            className="px-2 py-1 text-xs bg-[#26233a] text-[#908caa] border border-[#31748f] rounded hover:border-[#9ccfd8] transition-colors"
+                        >
+                            {tech}
+                        </span>
+                    ))}
                 </div>
-                {project.description && (
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                        {project.description}
-                    </p>
-                )}
-            </div>
+            )}
         </div>
     )
 } 
