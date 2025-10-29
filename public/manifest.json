@@ -1,7 +1,7 @@
 {
-  "name": "Dex’s Playground",
-  "short_name": "Dex",
-  "description": "A personal playground for experiments, code, and creative projects by Dex. Explore tools, workflows, and honest write-ups about what works (and what breaks).",
+  "name": "nhd",
+  "short_name": "nhd",
+  "description": "I spend most of my time building terminal tools and web apps, along with some fun side projects, gradually diving into core backend & systems stuff",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
