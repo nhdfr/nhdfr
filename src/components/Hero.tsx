@@ -14,7 +14,6 @@ interface NavLink {
 interface HeroProps {
   name: string;
   title: string;
-  description: string;
   navLinks?: NavLink[];
   contacts?: ContactLink[];
 }
@@ -22,7 +21,6 @@ interface HeroProps {
 export default function Hero({
   name,
   title,
-  description,
   navLinks = [],
   contacts = [],
 }: HeroProps) {
@@ -30,31 +28,29 @@ export default function Hero({
     <div className="space-y-2">
       <div className="space-y-1">
         <div className="flex items-center justify-between gap-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#e0def4]">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#67b25e]">
             {name}
           </h1>
           <Image
             src="/cat.gif"
             alt="cat"
-            width={80}
-            height={80}
+            width={60}
+            height={60}
             className="rounded-lg"
             unoptimized
           />
         </div>
-        <p className="text-xl text-[#908caa]">
-          {title}
-        </p>
+        <p className="text-xl text-gray-400">{title}</p>
       </div>
 
       {navLinks.length > 0 && (
-        <div className="text-[#908caa] text-sm font-mono flex flex-wrap gap-1">
+        <div className="text-gray-400 text-sm font-mono flex flex-wrap gap-1">
           {navLinks.map((link, index) => (
             <div key={link.href} className="flex items-center gap-1">
-              {index > 0 && <span className="text-[#6e6a86]">:: </span>}
+              {index > 0 && <span className="text-gray-600"> </span>}
               <Link
                 href={link.href}
-                className="text-[#9ccfd8] hover:text-[#eb6f92] transition-colors"
+                className="text-[#67b25e] hover:text-[#81c774] transition-colors"
               >
                 {link.label}
               </Link>
@@ -63,26 +59,19 @@ export default function Hero({
         </div>
       )}
 
-      <div className="border-t border-dashed border-[#31748f] my-2"></div>
-
-      <div>
-        <p className="text-[#908caa] leading-relaxed text-base">
-          {description}
-        </p>
-      </div>
+      <div className="border-t border-dashed border-gray-700 my-2"></div>
 
       {contacts.length > 0 && (
         <div className="space-y-2">
-          <div className="border-t border-dashed border-[#31748f]"></div>
-          <div className="text-[#908caa] text-sm font-mono flex flex-wrap gap-1">
-            {contacts.map((contact, index) => (
+          <div className="border-t border-dashed border-gray-700"></div>
+          <div className="text-gray-400 text-sm font-mono flex flex-wrap gap-1">
+            {contacts.map((contact) => (
               <div key={contact.label} className="flex items-center gap-1">
-                {index > 0 && <span className="text-[#6e6a86]">:: </span>}
                 <Link
                   href={contact.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#9ccfd8] hover:text-[#eb6f92] transition-colors"
+                  className="text-[#67b25e] hover:text-[#81c774] transition-colors"
                 >
                   {contact.label}
                 </Link>

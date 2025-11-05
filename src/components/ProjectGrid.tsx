@@ -1,22 +1,28 @@
 import type { Project } from "contentlayer/generated";
-import ProjectCard from "./ProjectCard";
+import Link from "next/link";
 
 interface ProjectGridProps {
   projects: Project[];
   columns?: 2 | 3 | 4;
 }
 
-export default function ProjectGrid({ projects, columns = 2 }: ProjectGridProps) {
-  const gridColsClass = {
-    2: "grid-cols-1 md:grid-cols-2 gap-5",
-    3: "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5",
-    4: "grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5",
-  };
-
+export default function ProjectGrid({ projects }: ProjectGridProps) {
   return (
-    <div className={`grid ${gridColsClass[columns]}`}>
+    <div className="space-y-1">
       {projects.map((project) => (
-        <ProjectCard key={project._id} project={project} />
+        <div key={project._id} className="flex items-start gap-6 py-1">
+          <Link
+            href={project.github || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#67b25e] hover:text-[#81c774] transition-colors min-w-[180px] font-mono text-sm"
+          >
+            {project.title}
+          </Link>
+          <p className="text-gray-400 text-sm flex-1">
+            {project.description}
+          </p>
+        </div>
       ))}
     </div>
   );

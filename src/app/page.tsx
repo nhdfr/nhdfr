@@ -17,38 +17,37 @@ export default function HomePage() {
   const contactLinks = [
     { label: "email", url: "mailto:nhdfr.dev@gmail.com" },
     { label: "github", url: "https://github.com/nhdfr" },
-    { label: "x.com", url: "https://x.com/nhdfrrr" },
-    { label: "discord", url: "https://discord.com/users/#" },
+    { label: "twitter", url: "https://x.com/nhdfrrr" },
+    { label: "discord", url: "https://discord.com/users/nhdfrr" },
   ];
 
   return (
-    <div className="min-h-screen bg-[#191724] p-8">
+    <div className="min-h-screen bg-[#16181c] p-8">
       <div className="w-full max-w-3xl mx-auto">
         <div className="mb-8">
           <Hero
             name="nhd"
             title="know your tools...."
             navLinks={navLinks}
-            description="I spend most of my time building terminal tools and web apps, along with some fun side projects, gradually diving into core backend & systems stuff"
             contacts={contactLinks}
           />
         </div>
 
-        <div className="border-t border-dashed border-[#31748f] my-6"></div>
+        <div className="border-t border-dashed border-gray-700 my-6"></div>
 
         {featuredProjects.length > 0 && (
           <div>
-            <h2 className="text-xl font-mono text-[#e0def4] mb-4">
+            <h2 className="text-xl font-mono text-white mb-4">
               some projects
             </h2>
-            <ProjectGrid projects={featuredProjects} columns={2} />
+            <ProjectGrid projects={featuredProjects} />
 
             <div className="mt-6">
-              <p className="text-[#908caa] text-sm">
+              <p className="text-gray-400 text-sm">
                 check all of them{" "}
                 <Link
                   href="/project"
-                  className="text-[#9ccfd8] hover:text-[#eb6f92] transition-colors underline"
+                  className="text-[#67b25e] hover:text-[#81c774] transition-colors underline"
                 >
                   here
                 </Link>

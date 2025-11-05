@@ -1,18 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
 import { Analytics } from '@vercel/analytics/next';
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
     title: "nhd",
@@ -109,20 +97,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
-            >
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="dark"
-                    enableSystem>
-                    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-                        <div className="absolute inset-0 bg-[#191724]" />
-                    </div>
-                    <main className="flex-1 relative">{children}</main>
-                    <Analytics />
-                </ThemeProvider>
+        <html lang="en">
+            <body>
+                {children}
+                <Analytics />
             </body>
         </html>
     );

@@ -2,6 +2,7 @@ import { allProjects } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { formatDate } from '@/lib/time'
 import ProseHtml from '@/components/ProseHtml'
+import Link from 'next/link'
 
 
 export async function generateStaticParams() {
@@ -43,7 +44,7 @@ export default async function ProjectPost({ params }: { params: Promise<{ slug: 
     }
 
     return (
-        <article className="container mx-auto px-4 py-8 max-w-3xl">
+        <>
             {/* JSON-LD Breadcrumbs */}
             <script
                 type="application/ld+json"
@@ -52,32 +53,51 @@ export default async function ProjectPost({ params }: { params: Promise<{ slug: 
                         '@context': 'https://schema.org',
                         '@type': 'BreadcrumbList',
                         itemListElement: [
-                            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://d3x.foo/' },
-                            { '@type': 'ListItem', position: 2, name: 'Project', item: 'https://d3x.foo/project' },
-                            { '@type': 'ListItem', position: 3, name: post.title, item: `https://d3x.foo/project/${post.slug}` },
+                            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://nhdfr.dev/' },
+                            { '@type': 'ListItem', position: 2, name: 'Project', item: 'https://nhdfr.dev/project' },
+                            { '@type': 'ListItem', position: 3, name: post.title, item: `https://nhdfr.dev/project/${post.slug}` },
                         ],
                     }),
                 }}
             />
-            <header className="mb-8">
-                <h1 className="text-4xl font-bold mb-3 leading-tight tracking-tight">{post.title}</h1>
-                <div className="flex flex-wrap items-center gap-4 text-muted-foreground text-sm mb-2">
-                    <time>{formatDate(post.date)}</time>
-                </div>
-                {post.technologies && post.technologies.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-3">
-                        {post.technologies.map((tag) => (
-                            <span key={tag} className="border border-border rounded px-2 py-0.5 text-xs text-foreground/80">
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
-                )}
-            </header>
 
-            <div className="prose prose-gray dark:prose-invert max-w-none">
-                <ProseHtml html={post.body.html} />
-            </div>
-        </article>
+            {/* Back Button */}
+            <nav>
+                <Link href="/project">← Back to projects</Link>
+            </nav>
+
+            <hr />
+
+            <article>
+                <header>
+                    <h1>{post.title}</h1>
+                    <p>
+                        <time>{formatDate(post.date)}</time>
+                    </p>
+                    {post.github && (
+                        <p>
+                            <b>Source:</b> <a href={post.github} target="_blank" rel="noopener noreferrer">{post.github}</a>
+                        </p>
+                    )}
+                    {post.technologies && post.technologies.length > 0 && (
+                        <p>
+                            <b>Tech:</b> {post.technologies.join(', ')}
+                        </p>
+                    )}
+                </header>
+
+                <hr />
+
+                <div className="prose">
+                    <ProseHtml html={post.body.html} />
+                </div>
+            </article>
+
+            <hr />
+
+            <footer>
+                <p><Link href="/project">← Back to projects</Link></p>
+            </footer>
+        </>
     )
 }

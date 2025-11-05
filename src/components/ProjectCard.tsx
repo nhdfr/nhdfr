@@ -7,18 +7,18 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
     return (
-        <div className="border border-[#31748f] rounded bg-[#1f1d2e] p-5   transition-all">
+        <div className="border border-gray-700 rounded bg-[#1a1d23] p-5 hover:border-[#67b25e] hover:bg-[#1e2128] transition-all">
             <Link
                 href={project.github || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"
             >
-                <h3 className="text-[#9ccfd8] group-hover:text-[#eb6f92] font-semibold text-base mb-3 transition-colors line-clamp-1">
+                <h3 className="text-[#67b25e] group-hover:text-[#81c774] font-semibold text-base mb-3 transition-colors line-clamp-1">
                     {project.title}
                 </h3>
             </Link>
-            <p className="text-[#908caa] text-sm mb-4 leading-relaxed line-clamp-3">
+            <p className="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-3">
                 {project.description}
             </p>
             {project.technologies && project.technologies.length > 0 && (
@@ -26,7 +26,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                     {project.technologies.slice(0, 3).map((tech, index) => (
                         <span
                             key={index}
-                            className="px-2 py-1 text-xs bg-[#26233a] text-[#908caa] border border-[#31748f] rounded hover:border-[#9ccfd8] transition-colors"
+                            className="px-2 py-1 text-xs bg-[#1e2128] text-gray-400 border border-gray-700 rounded hover:border-[#67b25e] transition-colors"
                         >
                             {tech}
                         </span>

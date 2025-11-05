@@ -1,14 +1,24 @@
 import { allProjects } from 'contentlayer/generated'
 import { sortByDate } from '@/lib/time'
 import { getAllCategories } from '@/lib/categories'
-import PageLayout from '@/components/PageLayout'
-import ProjectGrid from '@/components/ProjectGrid'
+import Link from 'next/link'
 
 export default function ProjectsPage() {
   const categories = getAllCategories()
 
   return (
-    <PageLayout title="Projects">
+    <>
+      <header>
+        <h1>nhd / projects</h1>
+        <nav>
+          <Link href="/">[home]</Link>
+          {" | "}
+          <Link href="/blog">[blog]</Link>
+        </nav>
+      </header>
+
+      <hr />
+
       {categories.map((category) => {
         const projectsInCategory = sortByDate(
           allProjects.filter((project) => project.category === category.id)
@@ -17,22 +27,34 @@ export default function ProjectsPage() {
         if (projectsInCategory.length === 0) return null
 
         return (
-          <div key={category.id} className="mb-12">
-            <div className="mb-4">
-              <h3 className="text-2xl font-semibold text-[#e0def4] mb-1">
-                {category.label}
-              </h3>
-              <p className="text-[#908caa] text-sm">
-                {category.description}
-              </p>
-            </div>
-            <ProjectGrid projects={projectsInCategory} columns={2} />
-            {categories.length > 1 && categories[categories.length - 1].id !== category.id && (
-              <div className="border-t border-dashed border-[#31748f] my-8"></div>
-            )}
-          </div>
+          <section key={category.id}>
+            <h2>&gt;&gt; {category.label}</h2>
+            <p>{category.description}</p>
+            <ul>
+              {projectsInCategory.map((project) => (
+                <li key={project._id}>
+                  <b>
+                    {project.github ? (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        {project.title}
+                      </a>
+                    ) : (
+                      <Link href={`/project/${project.slug}`}>{project.title}</Link>
+                    )}
+                  </b>
+                  {" - "}
+                  {project.description}
+                </li>
+              ))}
+            </ul>
+            <hr />
+          </section>
         )
       })}
-    </PageLayout>
+
+      <footer>
+        <p><small>© {new Date().getFullYear()} nhd</small></p>
+      </footer>
+    </>
   )
 }
