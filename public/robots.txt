@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://nhdfr.dev
-
-# Sitemaps
-Sitemap: https://nhdfr.dev/sitemap.xml
